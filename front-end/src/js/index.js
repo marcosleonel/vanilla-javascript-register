@@ -46,6 +46,29 @@ function deleteUser(event) {
 }
 
 /**
+ * Adiciona um item a lista de usuários apresentada na página. É mostrado o nome
+ * e um botão para excluir o respectivo registro.
+ * @param {String} id UUID que identifica o usuário.
+ * @param {String} name Nome do usuário.
+ * @void
+ */
+ function appendUser(id, name) {
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('btn--danger');
+  deleteButton.innerText = 'Excluir';
+  deleteButton.addEventListener('click', deleteUser);
+
+  const usersListItem = document.createElement('li');
+  usersListItem.setAttribute('id', id);
+  usersListItem.classList.add('users__list__item');
+  usersListItem.innerText = name;
+  usersListItem.appendChild(deleteButton);
+  
+  const usersList = document.getElementById('js-users-list');
+  usersList.appendChild(usersListItem);
+}
+
+/**
  * Cria na tela uma lista de usuários com um botão ao lado de cada um para
  * excluir o respectivo item.
  * @param {Array} users Lista de objetos com `name` e `id`.
@@ -88,29 +111,6 @@ function getUsers() {
       showError(true);
       console.error('[getUsers] Error: ', error);
     });
-}
-
-/**
- * Adiciona um item a lista de usuários apresentada na página. É mostrado o nome
- * e um botão para excluir o respectivo registro.
- * @param {String} id UUID que identifica o usuário.
- * @param {String} name Nome do usuário.
- * @void
- */
-function appendUser(id, name) {
-  const deleteButton = document.createElement('button');
-  deleteButton.classList.add('btn--delete');
-  deleteButton.innerText = 'Excluir';
-  deleteButton.addEventListener('click', deleteUser);
-
-  const usersListItem = document.createElement('li');
-  usersListItem.setAttribute('id', id);
-  usersListItem.classList.add('users__list__item');
-  usersListItem.innerText = name;
-  usersListItem.appendChild(deleteButton);
-  
-  const usersList = document.getElementById('js-users-list');
-  usersList.appendChild(usersListItem);
 }
 
 /**

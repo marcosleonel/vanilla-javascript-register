@@ -1,3 +1,100 @@
+:root {
+  --color-accent: #fff200;
+  --color-danger: #c70606;
+  --color-primary: #222;
+  --color-secondary: #afafaf;
+  --color-white: #fff;
+  --font-primary: Helvetica, Arial, sans-serif;
+  --font-secondary: Verdana, Geneva, Tahoma, sans-serif;
+  --box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: var(--font-secondary);
+  color: var(--color-primary);
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: var(--color-accent);
+  box-shadow: var(--box-shadow);
+}
+
+main {
+  background-color: var(--color-secondary);
+  width: 100%;
+  padding: 1rem;
+}
+
+h1 {
+  color: var(--color-primary);
+  font-size: 3rem;
+  font-family: var(--font-primary);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
 .hide {
   display: none;
+}
+
+.card {
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+}
+
+.btn--primary,
+.btn--danger {
+  width: 100%;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--danger {
+  background-color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  color: var(--color-white);
+}
+
+.users__list {
+  margin-top: 2rem;
+}
+
+.users__create__input {
+  width: 100%;
+  border: 1px solid var(--color-secondary);
+  background: var(--color-white);
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 769px) {
+  .btn--primary,
+  .btn--danger {
+    width: 200px;
+  }
 }
