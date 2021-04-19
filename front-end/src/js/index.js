@@ -10,7 +10,7 @@ const BASE_URL = 'http://localhost:3000/users';
  * @param {Boolean} hasError Informa se há erro na operação.
  * @void
  */
- function showError(hasError) {
+function showError(hasError) {
   const errorMsg = document.getElementById('error-msg');
 
   if (hasError) {
@@ -43,6 +43,29 @@ function deleteUser(event) {
       showError(true);
       console.error('[deleteUser] Error: ', error);
     });
+}
+
+/**
+ * Adiciona um item a lista de usuários apresentada na página. É mostrado o nome
+ * e um botão para excluir o respectivo registro.
+ * @param {String} id UUID que identifica o usuário.
+ * @param {String} name Nome do usuário.
+ * @void
+ */
+function appendUser(id, name) {
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('btn--danger');
+  deleteButton.innerText = 'Excluir';
+  deleteButton.addEventListener('click', deleteUser);
+
+  const usersListItem = document.createElement('li');
+  usersListItem.setAttribute('id', id);
+  usersListItem.classList.add('users__list__item');
+  usersListItem.innerText = name;
+  usersListItem.appendChild(deleteButton);
+  
+  const usersList = document.getElementById('js-users-list');
+  usersList.appendChild(usersListItem);
 }
 
 /**
@@ -91,35 +114,14 @@ function getUsers() {
 }
 
 /**
- * Adiciona um item a lista de usuários apresentada na página. É mostrado o nome
- * e um botão para excluir o respectivo registro.
- * @param {String} id UUID que identifica o usuário.
- * @param {String} name Nome do usuário.
- * @void
- */
-function appendUser(id, name) {
-  const deleteButton = document.createElement('button');
-  deleteButton.classList.add('btn--delete');
-  deleteButton.innerText = 'Excluir';
-  deleteButton.addEventListener('click', deleteUser);
-
-  const usersListItem = document.createElement('li');
-  usersListItem.setAttribute('id', id);
-  usersListItem.classList.add('users__list__item');
-  usersListItem.innerText = name;
-  usersListItem.appendChild(deleteButton);
-  
-  const usersList = document.getElementById('js-users-list');
-  usersList.appendChild(usersListItem);
-}
-
-/**
  * Solicita à API a adição de um novo usuário ao banco.
- * @param {String} name Nome do noov usuário.
+ * @param {String} name Nome do novo usuário.
  * @void
  */
 function addUser(e) {
   e.preventDefault();
+  e.stopImmediatePropagation();
+
   showError(false);
 
   const newUser = document.getElementById('new-user').value;
@@ -144,4 +146,6 @@ function addUser(e) {
 const addUserButton = document.getElementById('add-user');
 addUserButton.addEventListener('click', addUser);
 
-getUsers();
+document.onreadystatechange = function () {
+  if (document.readyState === 'complete') getUsers();
+}
