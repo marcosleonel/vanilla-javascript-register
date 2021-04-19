@@ -10,7 +10,7 @@ const BASE_URL = 'http://localhost:3000/users';
  * @param {Boolean} hasError Informa se há erro na operação.
  * @void
  */
- function showError(hasError) {
+function showError(hasError) {
   const errorMsg = document.getElementById('error-msg');
 
   if (hasError) {
@@ -52,7 +52,7 @@ function deleteUser(event) {
  * @param {String} name Nome do usuário.
  * @void
  */
- function appendUser(id, name) {
+function appendUser(id, name) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('btn--danger');
   deleteButton.innerText = 'Excluir';
@@ -115,11 +115,13 @@ function getUsers() {
 
 /**
  * Solicita à API a adição de um novo usuário ao banco.
- * @param {String} name Nome do noov usuário.
+ * @param {String} name Nome do novo usuário.
  * @void
  */
 function addUser(e) {
   e.preventDefault();
+  e.stopImmediatePropagation();
+
   showError(false);
 
   const newUser = document.getElementById('new-user').value;
@@ -144,4 +146,6 @@ function addUser(e) {
 const addUserButton = document.getElementById('add-user');
 addUserButton.addEventListener('click', addUser);
 
-getUsers();
+document.onreadystatechange = function () {
+  if (document.readyState === 'complete') getUsers();
+}

@@ -66,6 +66,7 @@ li {
 .btn--primary,
 .btn--danger {
   width: 100%;
+  font-weight: 600;
 }
 
 .btn--primary {
@@ -75,13 +76,20 @@ li {
 }
 
 .btn--danger {
+  height: 1.6rem;
   background-color: var(--color-danger);
   border: 1px solid var(--color-danger);
   color: var(--color-white);
+  font-size: 0.75rem;
 }
 
 .users__list {
   margin-top: 2rem;
+}
+
+.users__list__item {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-secondary);
 }
 
 .users__create__input {
@@ -93,8 +101,19 @@ li {
 }
 
 @media only screen and (min-width: 769px) {
-  .btn--primary,
+  .btn--primary {
+    width: 100px;
+  }
+
   .btn--danger {
+    width: 70px;
+  }
+
+  .users__create__input {
     width: 200px;
+  }
+
+  .users__list__item button {
+    display: block;
   }
 }
