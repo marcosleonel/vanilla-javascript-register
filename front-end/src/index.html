@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Teste de Front-End aplicado pela UOL Edtech." />
+
+  <title>UOL Edtech Test</title>
+  
+  <link rel="icon" type="image/png" href="favicon.ico" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/krishdevdb/reseter.css/css/reseter.min.css"
+  />
+</head>
+<body>
+  <noscript>
+    O JavaScript precisa estar habilitado para que este app seja visualizado.
+  </noscript>
+
+  <nav>
+    <img src="images/uol-edtech-logo-main.png" alt="Logotipo da UOL EdTech" />
+  </nav>
+
+  <main>
+    <div class="card">
+      <section class="users">
+        <header>
+          <h1>Usuários</h1>
+        </header>
+
+        <section class="users__create">
+          <form>
+            <input
+              id="new-user"
+              class="users__create__input"
+              type="text"
+              aria-label="Nome"
+              placeholder="Insira o nome do usuário"
+              required
+            />
+            <button id="add-user" class="btn--primary">Inserir</button>
+          </form>
+        </section>  <!-- / .users__search-->
+
+        <section class="users__list">
+          <ul id="js-users-list"></ul>
+
+          <div id="error-msg" class="users__list__alert--danger hide">
+            <p>
+              Ocorreu um erro na operação realizada. 
+              Por favor, tente novamente mais tarde.
+            </p>
+          </div>
+          
+          <p
+            id="users-loading"
+            class="users__list__loading hide"
+          >
+            Carregando...
+          </p>
+
+          <p
+            id="users-not-found"
+            class="users__list__not-found hide"
+          >
+            Nenhum usuário encontrado
+          </p>
+        </section>  <!-- / .users__list-->
+      </section>  <!--/ .users -->
+    </div>  <!-- / .card -->
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
