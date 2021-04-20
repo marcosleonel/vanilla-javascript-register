@@ -1,12 +1,16 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Ada Lovelace"
-        },
-        {
-            "id": 2,
-            "name": "Alan Turing"
-        }
-    ]
+  "users": [
+    {
+      "id": "73c3be95-443a-429d-9128-6412b4b938bf",
+      "name": "Richard Stallman"
+    },
+    {
+      "id": "9c34e343-15cc-4c32-84a6-a52965297a8c",
+      "name": "Ada Lovelace"
+    },
+    {
+      "id": "d7dd8848-d1ea-43c8-87a2-c76ba9acf0c4",
+      "name": "Grace Hopper"
+    }
+  ]
 }
